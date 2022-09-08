@@ -9,6 +9,7 @@ public static void main(String[] args) {
 	       for(int n=0;n<arr[m].length;n++) {
 	          if((arr[m][n]==arr[i][j-1])&&(n==1)) {
 		      count++;
+		     // System.out.println(arr[m][n-1]); // to display grandchildren names
 		}
 	     }
 	  }
