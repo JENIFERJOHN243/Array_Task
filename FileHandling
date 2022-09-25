@@ -1,0 +1,52 @@
+package zsgs;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class FileHandling {
+
+	public static void main(String[] args) throws IOException {
+		String fileName = "D:\\JavaIO\\src\\zsgs\\FileHandling.java";
+		FileHandling filehandling = new FileHandling();
+		filehandling.checkLinesWordsCharacters(fileName);
+		filehandling.copyFile();
+		filehandling.findFilePath(fileName);
+	}
+	
+	private void checkLinesWordsCharacters(String fileName) throws IOException {
+		int lines=0,words=0,characters=0;
+		BufferedReader br = new BufferedReader(new FileReader(fileName));
+		while(fileName!=null) {
+			lines++;
+			String word[]=fileName.split(" ");
+			words+=word.length;
+			for(String i:word) {
+				characters+=i.length();
+			}
+			fileName=br.readLine();
+		}
+		System.out.println("No Of Lines : "+lines);
+		System.out.println("No Of Words : "+words);
+		System.out.println("No Of Characters : "+characters);
+	}
+	
+	private void copyFile() throws IOException {
+		FileInputStream r = new FileInputStream("D:\\JavaIO\\src\\zsgs\\FileHandling.java");
+		FileOutputStream w = new FileOutputStream("D:\\JavaIO\\src\\zsgs\\FileHandlingCopy.txt");
+		int copyFile;
+		while((copyFile=r.read())!= -1) {
+			w.write((char)copyFile);
+		}
+		System.out.println("File Copied Successfully");
+	}
+	
+	private void findFilePath(String fileName) throws IOException {
+		File file = new File(fileName);
+		System.out.println("Absolute Path: "+file.getAbsolutePath());
+		System.out.println("Path: "+file.getPath());
+	}
+}
